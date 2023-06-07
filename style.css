@@ -25,3 +25,25 @@ td {
 .empty-row {
   background-color: white;
 }
+
+#menu-icon {
+  font-size: 30px;
+  padding: 5px 1%;
+  color: aquamarine;
+  display: block;
+}
+.menu {
+  position: absolute;
+  top: 20px;
+  left: 0;
+  width: 20%;
+  margin-top: 20px;
+  margin-left: 10px;
+  padding: 5px 1%;
+  border-radius: 1rem;
+  background: green;
+  display: none;
+}
+.menu.active {
+  display: block;
+}

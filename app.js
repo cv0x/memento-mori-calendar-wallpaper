@@ -30,7 +30,7 @@ function highlightCells() {
 
   var selectedDate = new Date(dateInput.value);
   if (isNaN(selectedDate)) {
-    alert("Zadejte platné datum.");
+    alert("Enter a valid date.");
     return;
   }
 
@@ -47,16 +47,25 @@ function highlightCells() {
     }
   }
 
-  // Uložení vybraného data do localStorage
+  // save data to localStorage
   localStorage.setItem("selectedDate", dateInput.value);
 }
 
 window.onload = function () {
-  // Načtení uloženého data z localStorage
+  // load data from localStorage
   var savedDate = localStorage.getItem("selectedDate");
   if (savedDate) {
     document.getElementById("dateInput").value = savedDate;
   }
 
   generateTable();
+};
+
+//toggle icon menu
+let menuIcon = document.querySelector("#menu-icon");
+let menu = document.querySelector(".menu");
+
+menuIcon.onclick = () => {
+  menuIcon.classList.toggle("bx-x");
+  menu.classList.toggle("active");
 };

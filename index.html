@@ -3,13 +3,19 @@
   <head>
     <title>Memento Mori</title>
     <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
   </head>
   <body>
-    <label for="dateInput">Zadejte datum:</label>
-    <input type="date" id="dateInput" />
+    <i class="bx bx-menu" id="menu-icon"></i>
+    <div class="menu">
+      <label for="dateInput" id="addDate">Enter your date of birth:</label>
+      <input type="date" id="dateInput" />
 
-    <button onclick="highlightCells()">Označit</button>
-
+      <button onclick="highlightCells()" id="addButton">Add</button>
+    </div>
     <div id="tableContainer"></div>
     <script src="app.js"></script>
   </body>
