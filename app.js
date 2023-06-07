@@ -71,25 +71,20 @@ menuIcon.onclick = () => {
 };
 
 //daily quotes
-var quotes = [
-  " I learned that courage was not the absence of fear, but the triumph over it. The brave man is not he who does not feel afraid, but he who conquers that fear.  -Nelson Mandela",
-  " If you believe it will work, you'll see opportunities. If you believe it won't, you will see obstacles. -Wayne Dyer",
-  " Believe you can and you're halfway there. -Theodore Roosevelt",
-];
-
-// Funkce pro náhodný výběr citátu
+import quotes from "./quote.js";
+// Random quote feature
 function takeRandomQuotes() {
   var index = Math.floor(Math.random() * quotes.length);
   return quotes[index];
 }
 
-// Aktualizace citátu při načtení stránky
+// Update quote on page load
 $(document).ready(function () {
   var todayQuotes = takeRandomQuotes();
   $("#quotes").text(todayQuotes);
 });
 
-// Aktualizace citátu každý den v půlnoci
+// Quote update every day at midnight
 setInterval(function () {
   var todayQuotes = takeRandomQuotes();
   $("#quotes").text(todayQuotes);
