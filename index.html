@@ -7,16 +7,23 @@
       href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
       rel="stylesheet"
     />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   </head>
   <body>
-    <i class="bx bx-menu" id="menu-icon"></i>
-    <div class="menu">
-      <label for="dateInput" id="addDate">Enter your date of birth:</label>
-      <input type="date" id="dateInput" />
-
-      <button onclick="highlightCells()" id="addButton">Add</button>
+    <div class="rightBox">
+      <h1 id="mainHeading">MEMENTO MORI</h1>
+      <p id="quotes"></p>
     </div>
-    <div id="tableContainer"></div>
-    <script src="app.js"></script>
+    <div class="leftBox">
+      <i class="bx bx-menu" id="menu-icon"></i>
+      <div class="menu">
+        <label for="dateInput" id="addDate">Enter your date of birth:</label>
+        <input type="date" id="dateInput" />
+
+        <button onclick="highlightCells()" id="addButton">Add</button>
+      </div>
+      <div id="tableContainer"></div>
+    </div>
+    <script src="app.js" type="module"></script>
   </body>
 </html>

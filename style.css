@@ -3,6 +3,7 @@
   margin: 0;
   padding: 0;
   font-family: "Poppins", sans-serif;
+  background: gray;
   font-weight: 600;
 }
 
@@ -11,25 +12,59 @@ table {
   margin: 0 auto;
 }
 
-table,
-th,
+table {
+  top: 10px;
+  border: 1px solid rgb(97, 97, 97);
+  padding: 5px;
+}
+th {
+  top: 10px;
+  border: 1px solid rgb(97, 97, 97);
+  padding: 5px;
+}
 td {
-  border: 1px solid black;
+  top: 10px;
+  width: 1px;
+  border: 1px solid rgb(97, 97, 97);
   padding: 5px;
 }
 
+#mainHeading {
+  position: relative;
+  justify-content: center;
+  text-align: center;
+  color: black;
+  font-size: 40px;
+  display: flex;
+}
+#quotes {
+  position: relative;
+  padding: 10px;
+  border: 5px;
+  left: 10px;
+  justify-content: center;
+  text-align: center;
+  color: black;
+  font-size: 15px;
+  display: flex;
+}
+
 .highlight {
-  background-color: yellow;
+  background-color: rgb(0, 0, 0);
 }
 
 .empty-row {
-  background-color: white;
+  background-color: gray;
 }
 
 #menu-icon {
+  position: absolute;
+  top: 5px;
+  left: 5px;
   font-size: 30px;
-  padding: 5px 1%;
-  color: aquamarine;
+  height: 30px;
+  width: 30px;
+  color: black;
   display: block;
 }
 .menu {
@@ -41,9 +76,23 @@ td {
   margin-left: 10px;
   padding: 5px 1%;
   border-radius: 1rem;
-  background: green;
+  background: black;
   display: none;
 }
 .menu.active {
   display: block;
+}
+.leftBox {
+  left: 0;
+  margin: 20px;
+  width: 60%;
+  position: fixed;
+  text-align: center;
+}
+.rightBox {
+  right: 0;
+  margin: 10px;
+  width: 40%;
+  position: fixed;
+  text-align: center;
 }
