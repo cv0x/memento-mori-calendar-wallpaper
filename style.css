@@ -20,37 +20,46 @@ th {
 td {
   top: 10px;
   width: 1px;
-  border: 1px solid rgba(252, 243, 164, 0.295);
+  border: 1px solid rgba(255, 253, 230, 0.295);
   padding: 5px;
 }
-
+button {
+  color: antiquewhite;
+  width: 80px;
+  border-radius: 1rem;
+}
 #mainHeading {
   position: relative;
   justify-content: center;
   text-align: center;
   color: antiquewhite;
-  font-size: 40px;
+  font-size: 20px;
   display: flex;
 }
 #quotes {
   position: relative;
-  padding: 10px;
+  padding: 1px;
   border: 5px;
   justify-content: center;
   text-align: center;
   color: rgb(255, 245, 232);
-  font-size: 20px;
+  font-size: 10px;
   display: flex;
 }
-
 .highlight {
-  background-color: #723131be;
+  background-color: #0000007a;
 }
-
 .empty-row {
   background-color: rgb(59, 59, 59);
 }
-
+.Box {
+  z-index: 1;
+  right: 0;
+  margin: 10px;
+  width: 100%;
+  position: fixed;
+  text-align: center;
+}
 #menu-icon {
   position: absolute;
   top: 5px;
@@ -58,14 +67,14 @@ td {
   font-size: 30px;
   height: 30px;
   width: 30px;
-  color: antiquewhite;
+  color: rgba(250, 235, 215, 0.274);
   display: block;
 }
 .menu {
   position: absolute;
   top: 20px;
-  left: 0;
-  width: 13%;
+  left: 10px;
+  width: 20%;
   margin-top: 20px;
   margin-left: 10px;
   padding: 5px 1%;
@@ -78,24 +87,15 @@ td {
 .menu.active {
   display: block;
 }
-.leftBox {
-  left: 0;
-  margin: 20px;
-  width: 50%;
-  position: fixed;
-  text-align: center;
-}
-.rightBox {
-  z-index: 1;
-  right: 0;
-  margin: 10px;
-  width: 50%;
-  position: fixed;
-  text-align: center;
-}
 #dateInput {
   color: antiquewhite;
+  width: 150px;
+  border-radius: 5px;
 }
-button {
-  color: antiquewhite;
+.supportMe {
+  width: 400px;
+  height: 210px;
+  background-image: url(https://raw.githubusercontent.com/cv0x/Bitcoin-Real-Time-Price-Tracker/main/btcsupport.png);
+  background-repeat: no-repeat;
+  background-size: contain;
 }

@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Memento Mori</title>
     <link rel="stylesheet" href="style.css" />
     <link
@@ -10,20 +14,20 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   </head>
   <body>
-    <div class="rightBox">
+    <div class="Box">
       <h1 id="mainHeading">MEMENTO MORI</h1>
       <p id="quotes"></p>
-    </div>
-    <div class="leftBox">
       <i class="bx bx-menu" id="menu-icon"></i>
       <div class="menu">
         <label for="dateInput" id="addDate">Enter your date of birth:</label>
         <input type="date" id="dateInput" />
 
         <button onclick="highlightCells()" id="addButton">Add</button>
+        <h3>Support Creator ❤</h3>
+        <div class="supportMe"></div>
       </div>
       <div id="tableContainer"></div>
     </div>
-    <script src="app.js" type="module"></script>
+    <script src="app.js"></script>
   </body>
 </html>
