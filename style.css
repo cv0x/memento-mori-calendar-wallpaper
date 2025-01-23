@@ -61,7 +61,9 @@ button {
   text-align: center;
 }
 #menu-icon {
-  position: absolute;
+  position: fixed;
+  cursor: pointer;
+  transition: transform 0.3s ease;
   top: 5px;
   left: 5px;
   font-size: 30px;
@@ -70,7 +72,13 @@ button {
   color: rgba(250, 235, 215, 0.274);
   display: block;
 }
+#menu-icon:hover {
+  transform: scale(1.1);
+}
 .menu {
+  transition: opacity 0.3s ease;
+  opacity: 0;
+  pointer-events: none;
   position: absolute;
   top: 20px;
   left: 10px;
@@ -86,15 +94,27 @@ button {
 }
 .menu.active {
   display: block;
+  opacity: 1;
+  pointer-events: all;
 }
-#dateInput {
-  color: antiquewhite;
-  width: 150px;
-  border-radius: 5px;
+.date-inputs {
+  position: relative;
+  justify-content: center;
+  display: flex;
+  gap: 5px;
+  margin-bottom: 10px;
 }
+
+.date-select {
+  padding: 5px;
+  border: 1px solid #ffffff;
+  border-radius: 4px;
+  color: #fff;
+}
+
 .supportMe {
-  width: 400px;
-  height: 210px;
+  position: relative;
+  height: 200px;
   background-image: url(https://raw.githubusercontent.com/cv0x/Bitcoin-Real-Time-Price-Tracker/main/btcsupport.png);
   background-repeat: no-repeat;
   background-size: contain;

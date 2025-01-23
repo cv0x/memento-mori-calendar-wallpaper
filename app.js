@@ -1,15 +1,22 @@
+// Main function to generate the lifetime calendar table
 function generateTable() {
+  // Get table container element
   var tableContainer = document.getElementById("tableContainer");
+  // Set constants for table dimensions (52 weeks = 1 year)
   var weeksInYear = 52;
-  var years = 80 + 7;
+  var years = 80 + 7; // Total years to display (87 years = ~average lifespan + buffer)
   var cols = weeksInYear;
 
+  // Start building HTML table structure
   var tableHTML = "<table>";
+  // Create rows for each year of life
   for (var i = 0; i < years; i++) {
     tableHTML += "<tr>";
+    // Add empty spacer row every 11 years for better readability
     if ((i + 1) % 11 === 0 && i !== years - 1) {
       tableHTML += "<td class='empty-row' colspan='" + cols + "'></td>";
     } else {
+      // Add week cells for each year
       for (var j = 0; j < cols; j++) {
         tableHTML += "<td></td>";
       }
@@ -18,28 +25,89 @@ function generateTable() {
   }
   tableHTML += "</table>";
 
+  // Insert generated table into DOM and highlight cells
   tableContainer.innerHTML = tableHTML;
-
   highlightCells();
 }
 
-function highlightCells() {
-  var dateInput = document.getElementById("dateInput");
-  var tableContainer = document.getElementById("tableContainer");
-  var cells = tableContainer.getElementsByTagName("td");
-
-  var selectedDate = new Date(dateInput.value);
-  if (isNaN(selectedDate)) {
-    alert("Enter a valid date.");
-    return;
+// Initialize date selection dropdowns
+function initializeDateInputs() {
+  // Populate day dropdown (1-31)
+  const daySelect = document.getElementById("dayInput");
+  for (let i = 1; i <= 31; i++) {
+    const option = document.createElement("option");
+    option.value = i;
+    option.text = i;
+    daySelect.appendChild(option);
   }
 
-  var today = new Date();
+  // Populate month dropdown with names
+  const monthSelect = document.getElementById("monthInput");
+  const months = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
+  months.forEach((month, index) => {
+    const option = document.createElement("option");
+    option.value = index + 1; // Months are 1-based in the dropdown
+    option.text = month;
+    monthSelect.appendChild(option);
+  });
 
-  for (var i = 0; i < cells.length; i++) {
-    var cellDate = new Date(
+  // Populate year dropdown (current year back to 1900)
+  const yearSelect = document.getElementById("yearInput");
+  const currentYear = new Date().getFullYear();
+  for (let i = currentYear; i >= 1900; i--) {
+    const option = document.createElement("option");
+    option.value = i;
+    option.text = i;
+    yearSelect.appendChild(option);
+  }
+}
+
+// Highlight cells based on selected birthdate
+function highlightCells() {
+  // Get selected date values
+  const day = document.getElementById("dayInput").value;
+  const month = document.getElementById("monthInput").value;
+  const year = document.getElementById("yearInput").value;
+
+  // Exit if any date component is missing
+  if (!day || !month || !year) return;
+
+  // Create Date object (note: JavaScript months are 0-based)
+  const selectedDate = new Date(year, month - 1, day);
+
+  // Validate date (checks for invalid dates like February 30)
+  const isValidDate =
+    selectedDate.getDate() == day &&
+    selectedDate.getMonth() + 1 == month &&
+    selectedDate.getFullYear() == year;
+  if (!isValidDate) return;
+
+  // Get reference elements and cells
+  const today = new Date();
+  const tableContainer = document.getElementById("tableContainer");
+  const cells = tableContainer.getElementsByTagName("td");
+
+  // Iterate through all table cells
+  for (let i = 0; i < cells.length; i++) {
+    // Calculate date for current cell (each cell represents 1 week)
+    const cellDate = new Date(
       selectedDate.getTime() + i * (1000 * 60 * 60 * 24 * 7)
     );
+
+    // Highlight cells that are in the past and not spacer rows
     if (cellDate <= today && !cells[i].classList.contains("empty-row")) {
       cells[i].classList.add("highlight");
     } else {
@@ -47,21 +115,29 @@ function highlightCells() {
     }
   }
 
-  // save data to localStorage
-  localStorage.setItem("selectedDate", dateInput.value);
+  // Save selected date to localStorage
+  localStorage.setItem("birthDay", day);
+  localStorage.setItem("birthMonth", month);
+  localStorage.setItem("birthYear", year);
 }
 
+// Initial setup when page loads
 window.onload = function () {
-  // load data from localStorage
-  var savedDate = localStorage.getItem("selectedDate");
-  if (savedDate) {
-    document.getElementById("dateInput").value = savedDate;
-  }
+  initializeDateInputs();
+
+  // Load previously saved date from localStorage
+  const savedDay = localStorage.getItem("birthDay");
+  const savedMonth = localStorage.getItem("birthMonth");
+  const savedYear = localStorage.getItem("birthYear");
+
+  if (savedDay) document.getElementById("dayInput").value = savedDay;
+  if (savedMonth) document.getElementById("monthInput").value = savedMonth;
+  if (savedYear) document.getElementById("yearInput").value = savedYear;
 
   generateTable();
 };
 
-//toggle icon menu
+// Mobile menu toggle functionality
 let menuIcon = document.querySelector("#menu-icon");
 let menu = document.querySelector(".menu");
 
@@ -70,7 +146,7 @@ menuIcon.onclick = () => {
   menu.classList.toggle("active");
 };
 
-//daily quotes
+// Daily inspirational quotes setup
 var quotes = [
   "“Imagine smiling after a slap in the face. Then think of doing it twenty-four hours a day.” ― Markus Zusak, The Book Thief",
   "“If you are distressed by anything external, the pain is not due to the thing itself, but to your estimate of it; and this you have the power to revoke at any moment.” ― Marcus Aurelius, Meditations",
@@ -124,20 +200,20 @@ var quotes = [
   "“Life cannot, not even for a millisecond, remain exactly how it is.” ― Mokokoma Mokhonoana",
 ];
 
-// Random quote feature
+// Get random quote from the array
 function takeRandomQuotes() {
   var index = Math.floor(Math.random() * quotes.length);
   return quotes[index];
 }
 
-// Update quote on page load
+// Display random quote on page load
 $(document).ready(function () {
   var todayQuotes = takeRandomQuotes();
   $("#quotes").text(todayQuotes);
 });
 
-// Quote update every day at midnight
+// Update quote every 24 hours (at midnight)
 setInterval(function () {
   var todayQuotes = takeRandomQuotes();
   $("#quotes").text(todayQuotes);
-}, 24 * 60 * 60 * 1000); // 24 hodin * 60 minut * 60 sekund * 1000 milisekund
+}, 24 * 60 * 60 * 1000);

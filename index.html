@@ -15,19 +15,27 @@
   </head>
   <body>
     <div class="Box">
-      <h1 id="mainHeading">MEMENTO MORI</h1>
-      <p id="quotes"></p>
-      <i class="bx bx-menu" id="menu-icon"></i>
-      <div class="menu">
-        <label for="dateInput" id="addDate">Enter your date of birth:</label>
-        <input type="date" id="dateInput" />
-
-        <button onclick="highlightCells()" id="addButton">Add</button>
-        <h3>Support Creator ❤</h3>
-        <div class="supportMe"></div>
-      </div>
-      <div id="tableContainer"></div>
+  <h1 id="mainHeading">MEMENTO MORI</h1>
+  <p id="quotes"></p>
+  <i class="bx bx-menu" id="menu-icon"></i>
+  <div class="menu">
+    <div class="date-inputs">
+      <select id="dayInput" class="date-select">
+        <option value="">Day</option>
+      </select>
+      <select id="monthInput" class="date-select">
+        <option value="">Month</option>
+      </select>
+      <select id="yearInput" class="date-select">
+        <option value="">Year</option>
+      </select>
     </div>
+    <button onclick="highlightCells()" id="addButton">Add</button>
+    <h3>Support Creator ❤</h3>
+    <div class="supportMe"></div>
+  </div>
+  <div id="tableContainer"></div>
+</div>
     <script src="app.js"></script>
   </body>
 </html>
