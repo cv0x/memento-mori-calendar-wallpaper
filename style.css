@@ -1,121 +1,252 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Inter:wght@300;400;500;600&display=swap");
+
+:root {
+  --bg: #121212;
+  --lived: #ece4d4;
+  --future: rgba(236, 228, 212, 0.13);
+  --current: #d4a65a;
+  --text: #ece4d4;
+
+  /* set by app.js – always whole pixels so every cell is identical */
+  --cell: 10px;
+  --gap: 2px;
+  --decade-gap: 10px;
+  --block-gap: 30px;
+  --label-width: 24px;
+  --radius: 2px;
+}
+
 * {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-family: "Poppins", sans-serif;
-  background: rgb(59, 59, 59);
-  font-weight: 600;
 }
 
-table {
-  border-collapse: collapse;
-  margin: 0 auto;
-  top: 10px;
-  padding: 5px;
-}
-th {
-  top: 10px;
-  padding: 5px;
-}
-td {
-  top: 10px;
-  width: 1px;
-  border: 1px solid rgba(255, 253, 230, 0.295);
-  padding: 5px;
-}
-button {
-  color: antiquewhite;
-  width: 80px;
-  border-radius: 1rem;
-}
-#mainHeading {
-  position: relative;
-  justify-content: center;
-  text-align: center;
-  color: antiquewhite;
-  font-size: 20px;
-  display: flex;
-}
-#quotes {
-  position: relative;
-  padding: 1px;
-  border: 5px;
-  justify-content: center;
-  text-align: center;
-  color: rgb(255, 245, 232);
-  font-size: 10px;
-  display: flex;
-}
-.highlight {
-  background-color: #0000007a;
-}
-.empty-row {
-  background-color: rgb(59, 59, 59);
-}
-.Box {
-  z-index: 1;
-  right: 0;
-  margin: 10px;
+html,
+body {
   width: 100%;
-  position: fixed;
-  text-align: center;
+  height: 100%;
+  overflow: hidden;
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Inter", "Segoe UI", sans-serif;
+  transition: background-color 0.6s ease, color 0.6s ease;
 }
-#menu-icon {
-  position: fixed;
-  cursor: pointer;
-  transition: transform 0.3s ease;
-  top: 5px;
-  left: 5px;
-  font-size: 30px;
-  height: 30px;
-  width: 30px;
-  color: rgba(250, 235, 215, 0.274);
-  display: block;
-}
-#menu-icon:hover {
-  transform: scale(1.1);
-}
-.menu {
-  transition: opacity 0.3s ease;
-  opacity: 0;
-  pointer-events: none;
-  position: absolute;
-  top: 20px;
-  left: 10px;
-  width: 20%;
-  margin-top: 20px;
-  margin-left: 10px;
-  padding: 5px 1%;
-  border-radius: 1rem;
-  color: antiquewhite;
-  background: rgb(59, 59, 59);
-  box-shadow: 0 0 10px black;
-  display: none;
-}
-.menu.active {
-  display: block;
-  opacity: 1;
-  pointer-events: all;
-}
-.date-inputs {
-  position: relative;
-  justify-content: center;
+
+.wallpaper {
+  height: 100vh;
   display: flex;
-  gap: 5px;
-  margin-bottom: 10px;
+  align-items: center;
+  justify-content: center;
 }
 
-.date-select {
-  padding: 5px;
-  border: 1px solid #ffffff;
-  border-radius: 4px;
-  color: #fff;
+/* The frame is exactly as wide as the calendar, so header and footer line up with it */
+.frame {
+  display: flex;
+  flex-direction: column;
+  gap: 1.3vh;
+  width: var(--frame-width, max-content);
 }
 
-.supportMe {
-  position: relative;
-  height: 200px;
-  background-image: url(https://raw.githubusercontent.com/cv0x/Bitcoin-Real-Time-Price-Tracker/main/btcsupport.png);
-  background-repeat: no-repeat;
-  background-size: contain;
+/* ---------- Header ---------- */
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 2vh 4vw;
+}
+
+#title {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-weight: 600;
+  font-size: clamp(18px, 2.6vh, 36px);
+  letter-spacing: 0.32em;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.subtitle {
+  margin-top: 0.5vh;
+  font-size: clamp(9px, 0.95vh, 12px);
+  font-weight: 300;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  opacity: 0.5;
+}
+
+.stats {
+  display: flex;
+  gap: clamp(18px, 2.6vw, 56px);
+}
+
+.stat {
+  text-align: right;
+}
+
+.stat-value {
+  font-size: clamp(14px, 1.9vh, 26px);
+  font-weight: 500;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+
+.stat-label {
+  margin-top: 0.4vh;
+  font-size: clamp(8px, 0.9vh, 11px);
+  font-weight: 400;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  opacity: 0.5;
+}
+
+.progress {
+  height: 2px;
+  border-radius: 2px;
+  background: var(--future);
+  overflow: hidden;
+}
+
+#progressBar {
+  height: 100%;
+  width: 0;
+  background: var(--lived);
+  transition: width 0.8s ease, background-color 0.6s ease;
+}
+
+/* ---------- Calendar ---------- */
+
+.calendar {
+  align-self: center;
+  display: flex;
+  align-items: flex-start;
+  gap: var(--block-gap);
+}
+
+.block {
+  display: flex;
+  flex-direction: column;
+  gap: var(--decade-gap);
+}
+
+/* Fixed pixel tracks: labels can never stretch a column */
+.decade,
+.week-labels {
+  display: grid;
+  grid-template-columns: var(--label-width) repeat(52, var(--cell));
+  grid-auto-rows: var(--cell);
+  gap: var(--gap);
+}
+
+.week-labels {
+  margin-bottom: calc(var(--decade-gap) * -0.4);
+}
+
+.week-labels span,
+.row-label {
+  font-size: max(9px, calc(var(--cell) * 0.85));
+  line-height: var(--cell);
+  font-weight: 400;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+  opacity: 0.45;
+}
+
+.week-labels span {
+  text-align: center;
+  justify-self: center;
+}
+
+.row-label {
+  text-align: right;
+  padding-right: calc(var(--gap) * 3);
+}
+
+.cell {
+  display: block;
+  width: var(--cell);
+  height: var(--cell);
+  border-radius: var(--radius);
+  background: var(--future);
+  transition: background-color 0.6s ease;
+}
+
+.cell.past {
+  background: var(--lived);
+}
+
+.cell.current {
+  background: var(--current);
+  box-shadow: 0 0 calc(var(--cell) * 1.2) var(--current);
+}
+
+body.pulse .calendar .cell.current {
+  animation: pulse 2.4s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  50% {
+    opacity: 0.3;
+  }
+}
+
+/* ---------- Footer ---------- */
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1.5vh 4vw;
+}
+
+.legend {
+  display: flex;
+  gap: 1.6em;
+  font-size: clamp(9px, 0.95vh, 12px);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.legend span {
+  display: flex;
+  align-items: center;
+  gap: 0.6em;
+  opacity: 0.6;
+}
+
+.legend .cell {
+  width: 0.95em;
+  height: 0.95em;
+  box-shadow: none;
+}
+
+.quote {
+  flex: 1 1 320px;
+  max-width: 60%;
+  text-align: right;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-style: italic;
+  font-weight: 500;
+  font-size: clamp(12px, 1.35vh, 17px);
+  line-height: 1.3;
+  opacity: 0.85;
+}
+
+.quote .author {
+  display: block;
+  margin-top: 0.3em;
+  font-family: "Inter", "Segoe UI", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 0.6em;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  opacity: 0.55;
+}
+
+.hidden {
+  display: none !important;
 }

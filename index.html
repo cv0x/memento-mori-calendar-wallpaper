@@ -2,40 +2,36 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Memento Mori</title>
     <link rel="stylesheet" href="style.css" />
-    <link
-      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
-      rel="stylesheet"
-    />
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   </head>
   <body>
-    <div class="Box">
-  <h1 id="mainHeading">MEMENTO MORI</h1>
-  <p id="quotes"></p>
-  <i class="bx bx-menu" id="menu-icon"></i>
-  <div class="menu">
-    <div class="date-inputs">
-      <select id="dayInput" class="date-select" onmouseover="this.size=13;" onmouseout="this.size=1;">
-        <option value="">Day</option>
-      </select>
-      <select id="monthInput" class="date-select" onmouseover="this.size=13;" onmouseout="this.size=1;">
-        <option value="">Month</option>
-      </select>
-      <select id="yearInput" class="date-select" onmouseover="this.size=13;" onmouseout="this.size=1;">
-        <option value="">Year</option>
-      </select>
-    </div>
-    <button onclick="highlightCells()" id="addButton">Add</button>
-    <h3>Support Creator ❤</h3>
-    <div class="supportMe"></div>
-  </div>
-  <div id="tableContainer"></div>
-</div>
+    <main class="wallpaper">
+      <div id="frame" class="frame">
+        <header class="header">
+          <div class="brand">
+            <h1 id="title">MEMENTO MORI</h1>
+            <p class="subtitle">One square is one week of your life</p>
+          </div>
+          <div id="stats" class="stats"></div>
+        </header>
+
+        <div id="progress" class="progress"><div id="progressBar"></div></div>
+
+        <section id="calendar" class="calendar"></section>
+
+        <footer class="footer">
+          <div id="legend" class="legend">
+            <span><i class="cell past"></i>Lived</span>
+            <span><i class="cell current"></i>This week</span>
+            <span><i class="cell"></i>Remaining</span>
+          </div>
+          <p id="quote" class="quote"></p>
+        </footer>
+      </div>
+    </main>
+
     <script type="module" src="app.js"></script>
   </body>
 </html>

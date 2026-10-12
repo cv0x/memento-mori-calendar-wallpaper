@@ -1,0 +1,285 @@
+{
+  "contentrating": "Everyone",
+  "description": "Memento Mori life calendar. Every cell is one week of your life. Set your date of birth and life expectancy in the wallpaper properties.",
+  "file": "index.html",
+  "general": {
+    "properties": {
+      "schemecolor": {
+        "order": 0,
+        "text": "ui_browse_properties_scheme_color",
+        "type": "color",
+        "value": "0.0706 0.0706 0.0706"
+      },
+      "header_birth": {
+        "order": 1,
+        "text": "<b>Date of birth</b>",
+        "type": "text"
+      },
+      "birthday": {
+        "order": 2,
+        "text": "Day",
+        "type": "slider",
+        "min": 1,
+        "max": 31,
+        "value": 1,
+        "fraction": false,
+        "editable": true
+      },
+      "birthmonth": {
+        "order": 3,
+        "text": "Month",
+        "type": "combo",
+        "value": "1",
+        "options": [
+          {
+            "label": "January",
+            "value": "1"
+          },
+          {
+            "label": "February",
+            "value": "2"
+          },
+          {
+            "label": "March",
+            "value": "3"
+          },
+          {
+            "label": "April",
+            "value": "4"
+          },
+          {
+            "label": "May",
+            "value": "5"
+          },
+          {
+            "label": "June",
+            "value": "6"
+          },
+          {
+            "label": "July",
+            "value": "7"
+          },
+          {
+            "label": "August",
+            "value": "8"
+          },
+          {
+            "label": "September",
+            "value": "9"
+          },
+          {
+            "label": "October",
+            "value": "10"
+          },
+          {
+            "label": "November",
+            "value": "11"
+          },
+          {
+            "label": "December",
+            "value": "12"
+          }
+        ]
+      },
+      "birthyear": {
+        "order": 4,
+        "text": "Year",
+        "type": "slider",
+        "min": 1920,
+        "max": 2026,
+        "value": 2000,
+        "fraction": false,
+        "editable": true
+      },
+      "lifeexpectancy": {
+        "order": 5,
+        "text": "Life expectancy (years)",
+        "type": "slider",
+        "min": 40,
+        "max": 120,
+        "value": 80,
+        "fraction": false,
+        "editable": true
+      },
+      "header_look": {
+        "order": 10,
+        "text": "<b>Appearance</b>",
+        "type": "text"
+      },
+      "theme": {
+        "order": 11,
+        "text": "Theme",
+        "type": "combo",
+        "value": "ash",
+        "options": [
+          {
+            "label": "Ash",
+            "value": "ash"
+          },
+          {
+            "label": "Midnight",
+            "value": "midnight"
+          },
+          {
+            "label": "Paper",
+            "value": "paper"
+          },
+          {
+            "label": "Crimson",
+            "value": "crimson"
+          },
+          {
+            "label": "Forest",
+            "value": "forest"
+          },
+          {
+            "label": "Custom",
+            "value": "custom"
+          }
+        ]
+      },
+      "backgroundcolor": {
+        "order": 12,
+        "text": "Background color",
+        "type": "color",
+        "value": "0.0706 0.0706 0.0706",
+        "condition": "theme.value == 'custom'"
+      },
+      "textcolor": {
+        "order": 13,
+        "text": "Text color",
+        "type": "color",
+        "value": "0.9137 0.8824 0.8235",
+        "condition": "theme.value == 'custom'"
+      },
+      "livedcolor": {
+        "order": 14,
+        "text": "Lived weeks color",
+        "type": "color",
+        "value": "0.9137 0.8824 0.8235",
+        "condition": "theme.value == 'custom'"
+      },
+      "currentcolor": {
+        "order": 15,
+        "text": "Current week color",
+        "type": "color",
+        "value": "0.7882 0.6627 0.4314",
+        "condition": "theme.value == 'custom'"
+      },
+      "futurecolor": {
+        "order": 16,
+        "text": "Remaining weeks color",
+        "type": "color",
+        "value": "0.9137 0.8824 0.8235",
+        "condition": "theme.value == 'custom'"
+      },
+      "cellshape": {
+        "order": 17,
+        "text": "Cell shape",
+        "type": "combo",
+        "value": "rounded",
+        "options": [
+          {
+            "label": "Square",
+            "value": "square"
+          },
+          {
+            "label": "Rounded",
+            "value": "rounded"
+          },
+          {
+            "label": "Circle",
+            "value": "circle"
+          }
+        ]
+      },
+      "columns": {
+        "order": 18,
+        "text": "Calendar layout",
+        "type": "combo",
+        "value": "auto",
+        "options": [
+          {
+            "label": "Auto (fit screen)",
+            "value": "auto"
+          },
+          {
+            "label": "1 column",
+            "value": "1"
+          },
+          {
+            "label": "2 columns",
+            "value": "2"
+          },
+          {
+            "label": "3 columns",
+            "value": "3"
+          },
+          {
+            "label": "4 columns",
+            "value": "4"
+          }
+        ]
+      },
+      "gridscale": {
+        "order": 19,
+        "text": "Calendar size (%)",
+        "type": "slider",
+        "min": 40,
+        "max": 100,
+        "value": 100,
+        "fraction": false,
+        "editable": true
+      },
+      "pulse": {
+        "order": 20,
+        "text": "Pulse current week",
+        "type": "bool",
+        "value": true
+      },
+      "header_content": {
+        "order": 30,
+        "text": "<b>Content</b>",
+        "type": "text"
+      },
+      "titletext": {
+        "order": 31,
+        "text": "Title",
+        "type": "textinput",
+        "value": "MEMENTO MORI"
+      },
+      "showstats": {
+        "order": 32,
+        "text": "Show statistics",
+        "type": "bool",
+        "value": true
+      },
+      "showlabels": {
+        "order": 33,
+        "text": "Show age / week labels",
+        "type": "bool",
+        "value": true
+      },
+      "showquote": {
+        "order": 34,
+        "text": "Show daily quote",
+        "type": "bool",
+        "value": true
+      },
+      "showlegend": {
+        "order": 35,
+        "text": "Show legend",
+        "type": "bool",
+        "value": true
+      }
+    }
+  },
+  "preview": "preview.jpg",
+  "tags": [
+    "Minimalistic"
+  ],
+  "title": "MEMENTO MORI calendar",
+  "type": "web",
+  "visibility": "public",
+  "workshopid": "2986436976"
+}
