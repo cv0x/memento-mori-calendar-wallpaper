@@ -271,6 +271,12 @@
         "text": "Show legend",
         "type": "bool",
         "value": true
+      },
+      "showsupport": {
+        "order": 36,
+        "text": "Show support heart",
+        "type": "bool",
+        "value": true
       }
     }
   },

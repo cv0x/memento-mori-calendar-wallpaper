@@ -65,6 +65,7 @@ const settings = {
   showQuote: true,
   showLabels: true,
   showLegend: true,
+  showSupport: true,
   pulse: true,
 };
 
@@ -334,6 +335,7 @@ function applyTexts() {
   document
     .querySelector(".footer")
     .classList.toggle("hidden", !settings.showQuote && !settings.showLegend);
+  document.getElementById("support").classList.toggle("hidden", !settings.showSupport);
   document.body.classList.toggle("pulse", settings.pulse);
 }
 
@@ -386,6 +388,7 @@ window.wallpaperPropertyListener = {
     if (p("showquote") !== undefined) settings.showQuote = p("showquote");
     if (p("showlabels") !== undefined) settings.showLabels = p("showlabels");
     if (p("showlegend") !== undefined) settings.showLegend = p("showlegend");
+    if (p("showsupport") !== undefined) settings.showSupport = p("showsupport");
     if (p("pulse") !== undefined) settings.pulse = p("pulse");
 
     if (p("backgroundcolor")) settings.colors.bg = weColor(p("backgroundcolor"));

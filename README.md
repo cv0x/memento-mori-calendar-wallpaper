@@ -45,6 +45,7 @@ All options live in Wallpaper Engine's wallpaper properties panel (on the right 
 | Show age / week labels | Shows the decade labels and week numbers. |
 | Show daily quote | Shows the random quote at the bottom. |
 | Show legend | Shows the color legend at the bottom. |
+| Show support heart | Shows the small heart in the top-left corner. Hovering over it opens "Support the creator" with the Bitcoin address. |
 
 ## Project structure
 
