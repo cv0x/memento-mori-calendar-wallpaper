@@ -4,7 +4,14 @@ A minimalist life calendar for [Wallpaper Engine](https://www.wallpaperengine.io
 
 Steam Workshop: https://steamcommunity.com/sharedfiles/filedetails/?id=2986436976
 
-![MEMENTO MORI calendar wallpaper](https://steamuserimages-a.akamaihd.net/ugc/2057628900476690626/3CE0F3BA7BD2C8D237424DA3B59C6A1B7BE1C93F/?)
+![MEMENTO MORI calendar wallpaper](screenshots/showcase.gif)
+
+| | |
+| --- | --- |
+| ![Ash](screenshots/01-ash-rounded.png) | ![Midnight](screenshots/02-midnight-circle.png) |
+| ![Paper](screenshots/03-paper-square.png) | ![Crimson, 90 years](screenshots/04-crimson-90-years.png) |
+| ![Forest](screenshots/05-forest-circle.png) | ![Custom colors](screenshots/06-custom-colors.png) |
+| ![Minimal](screenshots/07-minimal.png) | ![Support the creator](screenshots/08-support-hover.png) |
 
 ## What the wallpaper shows
 
@@ -67,4 +74,4 @@ python -m http.server 8000
 
 Then open `http://localhost:8000/?birth=1995-06-15`. The `birth` parameter sets the date of birth when the page runs outside Wallpaper Engine.
 
-To test it in Wallpaper Engine, copy the folder into Wallpaper Engine's `projects/myprojects` directory, or open `index.html` from the Wallpaper Engine editor. The project also needs a `preview.jpg` (or `.gif`) next to `project.json`.
+To test it in Wallpaper Engine, copy the folder into Wallpaper Engine's `projects/myprojects` directory, or open `index.html` from the Wallpaper Engine editor. The animated `preview.gif` next to `project.json` is the Wallpaper Engine / Workshop preview.

@@ -173,8 +173,13 @@ function chooseLayout() {
   const frameGap = window.innerHeight * 0.013;
 
   const outer = (el) => (el.classList.contains("hidden") ? 0 : el.offsetHeight + frameGap);
+  // Keep the top-left support heart clear of the title
+  const verticalMargin = Math.max(
+    window.innerHeight * 0.04,
+    settings.showSupport ? 2 * 44 : 0
+  );
   const availH =
-    window.innerHeight * 0.96 - outer(header) - outer(progress) - outer(footer);
+    window.innerHeight - verticalMargin - outer(header) - outer(progress) - outer(footer);
   const availW = window.innerWidth * 0.97;
 
   const candidates =
@@ -329,7 +334,8 @@ function applyTheme() {
 function applyTexts() {
   const title = document.getElementById("title");
   title.textContent = settings.title;
-  title.classList.toggle("hidden", !settings.title);
+  // An empty title hides the subtitle too
+  document.querySelector(".brand").classList.toggle("hidden", !settings.title);
   document.getElementById("quote").classList.toggle("hidden", !settings.showQuote);
   document.getElementById("legend").classList.toggle("hidden", !settings.showLegend);
   document
